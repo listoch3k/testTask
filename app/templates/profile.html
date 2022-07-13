@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<h1>Профиль пользователя {{ current_user.username }}!</h1>
+<form action="http://localhost:5000/" method="POST" enctype="multipart/form-data">
+	<input type="file" name="file" />
+	<input type="submit" />
+	<p>{{ form.description }} {{ form.description.label }} {{ form.visible }} {{ form.visible.label }}</p>
+</form>
+<h2>Загруженные файлы</h2>
+<table class="table">
+	<tr>
+		<th>Название файла</th>
+		<th>Описание</th>
+		<th>Рейтинг</th>
+	</tr> {% for file in files %}
+	<tr>
+		<td>{{ file.filename }} </td>
+		<td> {{ file.description }}</td>
+		<td> {{ file.rating }}</td>
+		<td> {{ file.rating }} {{ form.visible() }} {{ form.visible.label }}</td>
+	</tr> {% endfor %} </table> {% endblock %}

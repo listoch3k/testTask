@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block content %}
+<h1>Hi, {{ current_user.username }}!</h1>
+<h2>Файлы пользователей</h2>
+<table class="table">
+	<tr>
+		<th>Название файла</th>
+		<th>Описание</th>
+		<th>Рейтинг</th>
+	</tr> {% for file in files %}
+	<tr>
+		<td>{{ file.filename }} </td>
+		<td> {{ file.description }}</td>
+		<td> {{ file.rating }}</td>
+		<td> <form action="" method="post" novalidate> {{ form.rating_plus() }} </form> </td>
+        <td> <form action="" method="post" novalidate> {{ form.rating_minus() }} </form> </td>
+		<td> <form action="" method="post" novalidate> {{ form.download() }} </form> </td>
+	</tr> {% endfor %}
+</table> {% endblock %}
